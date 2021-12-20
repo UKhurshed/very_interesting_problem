@@ -7,57 +7,50 @@
 
 import Foundation
 
-struct QueryModel: Codable{
-    let searchMetaData: SearchMetadata
-    let searchParametrs: SearchParameters
+struct QueryModel: Codable {
+    let searchMetadata: SearchMetadata
     let searchInformation: SearchInformation
-    let shoppingResult: [ShoppingQuery]
+    let shoppingResults: [ShoppingResult]
     let suggestedSearches: [SuggestedSearch]
-    let imagesResults: [ImagesResults]
-    
+    let imagesResults: [ImagesResult]
+
     enum CodingKeys: String, CodingKey {
-            case searchMetadata = "search_metadata"
-            case searchParameters = "search_parameters"
-            case searchInformation = "search_information"
-            case shoppingResults = "shopping_results"
-            case suggestedSearches = "suggested_searches"
-            case imagesResults = "images_results"
-        }
+        case searchMetadata = "search_metadata"
+        case searchInformation = "search_information"
+        case shoppingResults = "shopping_results"
+        case suggestedSearches = "suggested_searches"
+        case imagesResults = "images_results"
+    }
 }
 
-struct ShoppingQuery: Codable{
-    let position: Int
-    let link: String
-}
-
-struct ImagesResults: Codable{
+// MARK: - ImagesResult
+struct ImagesResult: Codable {
     let position: Int
     let thumbnail: String
-    let source: String
-    let title: String
+    let source, title: String
     let link: String
     let original: String
     let isProduct: Bool
     let inStock: Bool?
-    
-    enum CodingKeys: String, CodingKey{
-        case position, thumbnail, source, title, link, original
-        case isProduct = "is_product"
-        case inStock = "is_stock"
-    }
-}
-
-struct SearchParameters: Codable {
-    let engine, q, googleDomain, ijn: String
-    let device, tbm: String
 
     enum CodingKeys: String, CodingKey {
-        case engine, q
-        case googleDomain = "google_domain"
-        case ijn, device, tbm
+        case position, thumbnail, source, title, link, original
+        case isProduct = "is_product"
+        case inStock = "in_stock"
     }
 }
 
+// MARK: - SearchInformation
+struct SearchInformation: Codable {
+    let imageResultsState, queryDisplayed: String
+
+    enum CodingKeys: String, CodingKey {
+        case imageResultsState = "image_results_state"
+        case queryDisplayed = "query_displayed"
+    }
+}
+
+// MARK: - SearchMetadata
 struct SearchMetadata: Codable {
     let id, status: String
     let jsonEndpoint: String
@@ -77,15 +70,14 @@ struct SearchMetadata: Codable {
     }
 }
 
-struct SearchInformation: Codable {
-    let imageResultsState, queryDisplayed: String
 
-    enum CodingKeys: String, CodingKey {
-        case imageResultsState = "image_results_state"
-        case queryDisplayed = "query_displayed"
-    }
+// MARK: - ShoppingResult
+struct ShoppingResult: Codable {
+    let position: Int
+    let link: String
 }
 
+// MARK: - SuggestedSearch
 struct SuggestedSearch: Codable {
     let name: String
     let link: String
@@ -99,4 +91,3 @@ struct SuggestedSearch: Codable {
         case thumbnail
     }
 }
-
