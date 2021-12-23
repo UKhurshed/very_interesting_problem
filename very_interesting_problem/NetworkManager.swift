@@ -7,9 +7,13 @@
 
 import Foundation
 
+/// NetworkManager class
 class NetworkManager{
+    /// Singleton instance
     static let shared = NetworkManager()
+    /// instance of NSCache for caching images
     private var images = NSCache<NSString, NSData>()
+    /// API_KEY for request
     private let apiKey = "819ae09576efb5624e56b7234336aefa7c6cb80fb06273566a9d97dbcf828db8"
     
     let session: URLSession
@@ -19,6 +23,8 @@ class NetworkManager{
         session = URLSession(configuration: config)
       }
     
+    /// URLComponents
+    /// - Returns: instance URLComponents
     func components() -> URLComponents{
         var comp = URLComponents()
         comp.scheme = "https"
@@ -26,6 +32,10 @@ class NetworkManager{
         return comp
     }
     
+    /// Fetching by query
+    /// - Parameters:
+    ///   - query: query String
+    ///   - completion: [ImagesResult]?, Error?
     func fetchImagesByQuery(query: String, completion: @escaping ([ImagesResult]?, Error?) -> (Void)){
         let path = "/search.json"
         
@@ -73,11 +83,19 @@ class NetworkManager{
         
     }
     
+    /// Public methods for calling from ViewController
+    /// - Parameters:
+    ///   - imageResult: imageResult
+    ///   - completion: completion: Data?, Error?
     func image(imageResult: ImagesResult, completion: @escaping (Data?, Error?) -> (Void)){
         let url = URL(string: imageResult.thumbnail)!
         download(imageURL: url, completion: completion)
     }
-
+    
+    /// This methods store in NSCache image by URL, if image doesn't exists, in first with URLSession downloads image after caches in NSCache
+    /// - Parameters:
+    ///   - imageURL: imageURL URL
+    ///   - completion: completion: Data?, Error?
     private func download(imageURL: URL, completion: @escaping(Data?, Error?) -> (Void)){
         if let imageData = images.object(forKey: imageURL.absoluteString as NSString){
             print("using cached images")
@@ -112,7 +130,8 @@ class NetworkManager{
 }
 
 
-        
+
+/// Enum for NetworkManager errors
 enum NetworkManagerError: Error {
     case badResponse(URLResponse?)
     case badData

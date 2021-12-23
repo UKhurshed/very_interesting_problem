@@ -7,24 +7,27 @@
 
 import UIKit
 
+/// UITableViewCell xib
 class PictureTableViewCell: UITableViewCell {
-
+    
+    /// IBOutlet from imageView
     @IBOutlet weak var pictureView: UIImageView!
     
+    /// Identifier from Cell
     static let identifier = "PictureCell"
+    /// UINib xib
+    /// - Returns: UINib
     static func nib() -> UINib{
         return UINib(nibName: "PictureTableViewCell", bundle: nil)
     }
     
+    /// Initialize method
     override func awakeFromNib() {
         super.awakeFromNib()
         pictureView.contentMode = .scaleAspectFill
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
+    /// Setting image
     var image: UIImage?{
         didSet{
             pictureView.image = image

@@ -7,16 +7,22 @@
 
 import UIKit
 
+/// Main ViewController, show list of photos
 class ViewController: UIViewController{
     
+    /// Singleton instance of network manager
     let networkManager = NetworkManager.shared
+    /// Array of ImagesResult, sends to TableViewDataSource
     var posts: [ImagesResult] = []
+    /// Store query from UISearchBar
     private var queryFrom: String = ""
     
+    /// IBOutlets UI: TableView and SearchBar
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     
+    /// LifeCycle method, initialize and register all of properties
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -30,8 +36,10 @@ class ViewController: UIViewController{
 
 extension ViewController: UISearchBarDelegate{
     
+    /// This delegate method works when User after typing characters tap an enter keyword, and calling "fetchImagesByQuery" method from NetworkManager
+    /// - Parameter searchBar: searchBar UISearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        debugPrint("text:\(searchBar.text)")
+        debugPrint("text:\(searchBar.text ?? "none")")
         guard let searchBarTxt = searchBar.text else{
             debugPrint("nullable value from searchBar text")
             return
@@ -52,6 +60,11 @@ extension ViewController: UISearchBarDelegate{
 }
 
 extension ViewController: UITableViewDataSource{
+    /// numberOfRowsInSection method from UITableView
+    /// - Parameters:
+    ///   - tableView: tableView
+    ///   - section: numberOfRowsInSection
+    /// - Returns: Count of ImagesResult array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -83,6 +96,10 @@ extension ViewController: UITableViewDataSource{
 }
 
 extension ViewController: UITableViewDelegate{
+    /// When tap an element of list, DetailViewController page opens
+    /// - Parameters:
+    ///   - tableView: tableView
+    ///   - indexPath: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("index of Image: \(indexPath.row)")
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
@@ -94,6 +111,11 @@ extension ViewController: UITableViewDelegate{
         }
     }
     
+    /// Height of each cell from tableView
+    /// - Parameters:
+    ///   - tableView: tableView
+    ///   - indexPath: heightForRowAt
+    /// - Returns: CGFloat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         220
     }
