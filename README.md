@@ -6,6 +6,9 @@ The page must look like the page of the NavigationController where a search fiel
 A tap on the preview image must open an image in the full screen view with buttons “Next” and “Prev” that allow users to view previous and next images from the search result. Also, please add a button to open the original source page. Clicking on that button must open a website on Web View Controller inside the app. Users can close that Web View to return to images.
 It will be good if the images are cached on a device.
 
+Current version app
+https://user-images.githubusercontent.com/26713598/147344416-69d0311f-c25e-487a-aace-553f72e7aad4.mp4
+
 Future Plan
 1. MVP & MVVM
 2. Advanced seach by query
