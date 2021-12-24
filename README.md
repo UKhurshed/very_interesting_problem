@@ -7,7 +7,7 @@ A tap on the preview image must open an image in the full screen view with butto
 It will be good if the images are cached on a device.
 
 Current version app
-https://user-images.githubusercontent.com/26713598/147344416-69d0311f-c25e-487a-aace-553f72e7aad4.mp4
+![very_interest](https://user-images.githubusercontent.com/26713598/147344713-a7215b72-3490-4937-93cc-ae769f5cd364.gif)
 
 Future Plan
 1. MVP & MVVM
