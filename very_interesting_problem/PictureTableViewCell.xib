@@ -1,36 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PictureCell" rowHeight="328" id="KGk-i7-Jjw" customClass="PictureTableViewCell" customModule="very_interesting_problem" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PictureCell" rowHeight="250" id="KGk-i7-Jjw" customClass="PictureTableViewCell" customModule="very_interesting_problem" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" id="BHd-Tf-hz1">
-                        <rect key="frame" x="7" y="0.0" width="400" height="250"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0W-cg-D6Y">
+                        <rect key="frame" x="4" y="4" width="406" height="242"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Fs-ij-E1b">
+                                <rect key="frame" x="4" y="4" width="398" height="234"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="410" id="6u5-le-zez"/>
-                            <constraint firstAttribute="height" constant="250" id="RvJ-8c-TPn"/>
+                            <constraint firstAttribute="bottom" secondItem="1Fs-ij-E1b" secondAttribute="bottom" constant="4" id="8Yb-M3-zpC"/>
+                            <constraint firstItem="1Fs-ij-E1b" firstAttribute="top" secondItem="X0W-cg-D6Y" secondAttribute="top" constant="4" id="QYx-Ng-Ylh"/>
+                            <constraint firstAttribute="trailing" secondItem="1Fs-ij-E1b" secondAttribute="trailing" constant="4" id="V8t-zv-MfZ"/>
+                            <constraint firstItem="1Fs-ij-E1b" firstAttribute="leading" secondItem="X0W-cg-D6Y" secondAttribute="leading" constant="4" id="gu0-WY-Tfx"/>
+                            <constraint firstItem="1Fs-ij-E1b" firstAttribute="centerX" secondItem="X0W-cg-D6Y" secondAttribute="centerX" id="qbd-Kl-8un"/>
+                            <constraint firstItem="1Fs-ij-E1b" firstAttribute="centerY" secondItem="X0W-cg-D6Y" secondAttribute="centerY" id="yuL-b7-BL2"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="X0W-cg-D6Y" secondAttribute="trailing" constant="4" id="FHL-N7-MUE"/>
+                    <constraint firstItem="X0W-cg-D6Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="UxH-N2-gbf"/>
+                    <constraint firstAttribute="bottom" secondItem="X0W-cg-D6Y" secondAttribute="bottom" constant="4" id="nwG-sm-ZfL"/>
+                    <constraint firstItem="X0W-cg-D6Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="vwr-JE-sZ1"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="pictureView" destination="BHd-Tf-hz1" id="lqy-J0-qom"/>
+                <outlet property="pictureView" destination="1Fs-ij-E1b" id="cW3-1J-xIC"/>
             </connections>
-            <point key="canvasLocation" x="146.37681159420291" y="154.6875"/>
+            <point key="canvasLocation" x="116.8" y="118.74062968515743"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
